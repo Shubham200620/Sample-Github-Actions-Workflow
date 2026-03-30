@@ -1,0 +1,13 @@
+name: "Any Branch Workflow"
+
+on:
+  push:
+    branches:
+      - '**' #triggers on push to any branch
+
+jobs:
+    any_branch:
+        runs-on: ubuntu-latest
+        steps:
+          - name: "Any branch"
+            run: echo "This runs on any branch push"
