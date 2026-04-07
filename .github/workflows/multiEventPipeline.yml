@@ -11,6 +11,8 @@ on:
             - closed
             - opened
     workflow_dispatch:
+    schedule:
+        - cron: '30 0 * * 3'
 
 jobs:
     on-push: # Job 1
@@ -47,3 +49,10 @@ jobs:
         steps: #steps to be executed in the job
             - name: "Running on workflow dispatch" #step 1
               run: echo "Running on workflow dispatch"
+    
+    on-schedule:
+        if: github.event_name == 'schedule'
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Running every Wednesday at 6AM IST"
+              run: echo "This job runs every Wednesday at 6AM IST"
